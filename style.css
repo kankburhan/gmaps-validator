@@ -77,8 +77,13 @@ body {
 }
 
 @keyframes drift {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(30px, 30px); }
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(30px, 30px);
+    }
 }
 
 .container {
@@ -208,7 +213,9 @@ input[type="text"]:focus {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .hidden {
@@ -224,8 +231,15 @@ input[type="text"]:focus {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Status Headers */
@@ -249,9 +263,22 @@ input[type="text"]:focus {
     letter-spacing: 0.05em;
 }
 
-.badge-pending { background: rgba(148, 163, 184, 0.2); color: #94a3b8; }
-.badge-valid { background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.4); }
-.badge-invalid { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.4); }
+.badge-pending {
+    background: rgba(148, 163, 184, 0.2);
+    color: #94a3b8;
+}
+
+.badge-valid {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.badge-invalid {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+}
 
 /* Services Grid */
 .services-grid {
@@ -270,6 +297,11 @@ input[type="text"]:focus {
     flex-direction: column;
     gap: 0.5rem;
     transition: background 0.2s;
+    word-break: break-word;
+    /* Prevents long text from overflowing */
+    overflow-wrap: break-word;
+    min-width: 0;
+    /* Important for flex/grid children to shrink */
 }
 
 .service-item:hover {
@@ -294,9 +326,18 @@ input[type="text"]:focus {
     border-radius: 50%;
 }
 
-.dot-green { background: var(--success-color); box-shadow: 0 0 8px var(--success-color); }
-.dot-red { background: var(--error-color); }
-.dot-yellow { background: var(--warning-color); }
+.dot-green {
+    background: var(--success-color);
+    box-shadow: 0 0 8px var(--success-color);
+}
+
+.dot-red {
+    background: var(--error-color);
+}
+
+.dot-yellow {
+    background: var(--warning-color);
+}
 
 /* Cost Card */
 .cost-breakdown {
@@ -329,9 +370,20 @@ input[type="text"]:focus {
     font-weight: 600;
 }
 
-.risk-low { color: var(--success-color); background: rgba(16, 185, 129, 0.1); }
-.risk-medium { color: var(--warning-color); background: rgba(245, 158, 11, 0.1); }
-.risk-high { color: var(--error-color); background: rgba(239, 68, 68, 0.1); }
+.risk-low {
+    color: var(--success-color);
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.risk-medium {
+    color: var(--warning-color);
+    background: rgba(245, 158, 11, 0.1);
+}
+
+.risk-high {
+    color: var(--error-color);
+    background: rgba(239, 68, 68, 0.1);
+}
 
 /* Range Slider */
 .simulation-control {
@@ -384,7 +436,8 @@ input[type=range]::-webkit-slider-thumb:hover {
     text-align: left;
 }
 
-.cost-table th, .cost-table td {
+.cost-table th,
+.cost-table td {
     padding: 1rem;
     border-bottom: 1px solid var(--card-border);
 }
