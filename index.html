@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps API Key Validator & Cost Estimator | Check & Audit Keys</title>
+    <meta name="description"
+        content="Free online tool to validate Google Maps API keys, check enabled services (Maps JS, Geocoding, Places), and estimate potential monthly costs. Client-side & secure.">
+    <meta name="keywords"
+        content="google maps api key validator, google maps cost estimator, check google maps api key, api key audit, google maps pricing calculator, maps api security, developer tools">
+    <meta name="author" content="G-Maps Validator">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kankburhan.github.io/gmaps-validator/">
+    <meta property="og:title" content="Google Maps API Key Validator & Cost Estimator">
+    <meta property="og:description"
+        content="Validate Google Maps API keys, check enabled services, and estimate potential costs in seconds. Runs 100% in your browser.">
+    <meta property="og:image" content="https://kankburhan.github.io/gmaps-validator/preview-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://kankburhan.github.io/gmaps-validator/">
+    <meta property="twitter:title" content="Google Maps API Key Validator & Cost Estimator">
+    <meta property="twitter:description"
+        content="Validate Google Maps API keys, check enabled services, and estimate potential costs in seconds. Runs 100% in your browser.">
+    <meta property="twitter:image" content="https://kankburhan.github.io/gmaps-validator/preview-image.png">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://kankburhan.github.io/gmaps-validator/">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Google Maps API Key Validator",
+      "url": "https://kankburhan.github.io/gmaps-validator/",
+      "description": "A client-side tool to validate Google Maps API keys and estimate usage costs.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://maps.gstatic.com/mapfiles/api-3/images/icon_error.png" type="image/png">
+</head>
+
+<body>
+    <div class="background-globes">
+        <div class="globe globe-1"></div>
+        <div class="globe globe-2"></div>
+        <div class="globe globe-3"></div>
+    </div>
+
+    <main class="container">
+        <header class="hero">
+            <h1 class="gradient-text">G-Maps Validator</h1>
+            <p class="subtitle">Validate keys. Check services. Estimate costs.</p>
+        </header>
+
+        <section class="card input-section">
+            <div class="input-group">
+                <input type="text" id="apiKeyInput" placeholder="Paste your Google Maps API Key here..."
+                    autocomplete="off" spellcheck="false">
+                <button id="validateBtn" class="btn-primary">
+                    <span class="btn-text">Validate Key</span>
+                    <span class="loader hidden"></span>
+                </button>
+            </div>
+            <p class="safe-note">🔒 Runs entirely in your browser. Keys are never stored.</p>
+        </section>
+
+        <section id="resultsSection" class="results-container hidden">
+            <!-- Status API Key -->
+            <div class="card status-card">
+                <div class="status-header">
+                    <h2>API Key Status</h2>
+                    <span id="keyStatusBadge" class="badge badge-pending">Analyzing...</span>
+                </div>
+            </div>
+
+            <!-- Enabled APIs -->
+            <div class="card services-card">
+                <h3>Enabled Services</h3>
+                <div class="services-grid" id="servicesGrid">
+                    <!-- Dynamic Service Items -->
+                </div>
+            </div>
+
+            <!-- Cost Estimation -->
+            <div class="card cost-card">
+                <h3>Estimated Monthly Exposure</h3>
+                <div class="cost-breakdown">
+                    <div class="cost-item">
+                        <span>Risk Level</span>
+                        <span id="riskLevel" class="risk-badge">Low</span>
+                    </div>
+                    <div class="cost-item total-cost">
+                        <span>Potential Cost (100k reqs)</span>
+                        <span id="totalCost" class="cost-value">$0.00</span>
+                    </div>
+                </div>
+                <div class="simulation-control">
+                    <label for="reqRange">Simulated Requests: <span id="reqCountDisplay">100,000</span></label>
+                    <input type="range" id="reqRange" min="1000" max="1000000" step="1000" value="100000">
+                </div>
+            </div>
+
+            <div class="cost-detail-table-wrapper">
+                <table class="cost-table">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Status</th>
+                            <th>Cost / 1k</th>
+                            <th>Est. Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody id="costTableBody">
+                        <!-- Dynamic Rows -->
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <footer class="footer">
+            <div class="disclaimer">
+                <h4>⚠️ Disclaimer</h4>
+                <p>This tool is for educational and security auditing purposes only. Only test keys you own. Misuse may
+                    violate Google's Terms of Service.</p>
+            </div>
+            <p class="copyright">© 2024 Google Maps API Key Validator. Open Source on GitHub.</p>
+        </footer>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

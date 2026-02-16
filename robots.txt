@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kankburhan.github.io/gmaps-validator/sitemap.xml
