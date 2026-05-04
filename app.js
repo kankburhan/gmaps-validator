@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const riskLevelDisplay = document.getElementById('riskLevel');
     const reqRange = document.getElementById('reqRange');
     const reqCountDisplay = document.getElementById('reqCountDisplay');
+    const pocCard = document.getElementById('pocCard');
+    const pocCommands = document.getElementById('pocCommands');
+    const copyAllCurlBtn = document.getElementById('copyAllCurlBtn');
 
     // Pricing Constants (approximate pricing per 1000 requests)
     const PRICING = {
@@ -21,6 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentEnabledApis = [];
 
+    // Curl templates for POC generation
+    const CURL_TEMPLATES = {
+        'Maps JavaScript API': (key) => `# Maps JavaScript API - Load map tiles\ncurl -s -o /dev/null -w "%{http_code}" "https://maps.googleapis.com/maps/api/js?key=${key}"`,
+        'Static Maps API': (key) => `# Static Maps API - Generate static map image\ncurl -s -o map.png -w "%{http_code}" "https://maps.googleapis.com/maps/api/staticmap?center=40.714728,-73.998672&zoom=12&size=400x400&key=${key}"`,
+        'Geocoding API': (key) => `# Geocoding API - Resolve address to coordinates\ncurl -s "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${key}"`,
+        'Directions API': (key) => `# Directions API - Get route between two points\ncurl -s "https://maps.googleapis.com/maps/api/directions/json?origin=Disneyland&destination=Universal+Studios+Hollywood&key=${key}"`,
+        'Places API (New)': (key) => `# Places API - Search for places\ncurl -s "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Sydney&key=${key}"`
+    };
+
     // Event Listeners
     validateBtn.addEventListener('click', startValidation);
     apiKeyInput.addEventListener('keypress', (e) => {
@@ -31,6 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const value = parseInt(e.target.value);
         reqCountDisplay.textContent = value.toLocaleString();
         updatePricing(value);
+    });
+
+    copyAllCurlBtn.addEventListener('click', () => {
+        const allCurls = Array.from(pocCommands.querySelectorAll('.curl-code'))
+            .map(el => el.textContent)
+            .join('\n\n');
+        copyToClipboard(allCurls, copyAllCurlBtn.querySelector('span'));
     });
 
     async function startValidation() {
@@ -171,6 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Render Services
+        const apiKey = apiKeyInput.value.trim();
+        const successServices = [];
+
         services.forEach(service => {
             const el = document.createElement('div');
             el.className = 'service-item';
@@ -190,14 +212,97 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (service.status === 'success') {
                 currentEnabledApis.push(service.name);
+                successServices.push(service.name);
             }
         });
+
+        // Render POC Curl Commands
+        renderPocCurls(apiKey, successServices);
 
         // Initial Pricing
         updatePricing(parseInt(reqRange.value));
 
         // Scroll to results
         resultsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function renderPocCurls(apiKey, successServices) {
+        pocCommands.innerHTML = '';
+
+        if (successServices.length === 0) {
+            pocCard.classList.add('hidden');
+            return;
+        }
+
+        pocCard.classList.remove('hidden');
+
+        successServices.forEach(serviceName => {
+            const template = CURL_TEMPLATES[serviceName];
+            if (!template) return;
+
+            const curlCmd = template(apiKey);
+            const item = document.createElement('div');
+            item.className = 'poc-item';
+            item.innerHTML = `
+                <div class="poc-item-header">
+                    <span class="poc-service-name">
+                        <span class="status-dot dot-green"></span>
+                        ${serviceName}
+                    </span>
+                    <button class="btn-copy" title="Copy curl command">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                <pre class="curl-block"><code class="curl-code">${escapeHtml(curlCmd)}</code></pre>
+            `;
+
+            const copyBtn = item.querySelector('.btn-copy');
+            copyBtn.addEventListener('click', () => {
+                copyToClipboard(curlCmd, copyBtn.querySelector('span'));
+            });
+
+            pocCommands.appendChild(item);
+        });
+    }
+
+    function copyToClipboard(text, feedbackEl) {
+        navigator.clipboard.writeText(text).then(() => {
+            const original = feedbackEl.textContent;
+            feedbackEl.textContent = 'Copied!';
+            feedbackEl.parentElement.classList.add('copied');
+            setTimeout(() => {
+                feedbackEl.textContent = original;
+                feedbackEl.parentElement.classList.remove('copied');
+            }, 2000);
+        }).catch(() => {
+            // Fallback for older browsers
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            const original = feedbackEl.textContent;
+            feedbackEl.textContent = 'Copied!';
+            feedbackEl.parentElement.classList.add('copied');
+            setTimeout(() => {
+                feedbackEl.textContent = original;
+                feedbackEl.parentElement.classList.remove('copied');
+            }, 2000);
+        });
+    }
+
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
     }
 
     function updatePricing(requestCount) {
