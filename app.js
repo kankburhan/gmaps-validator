@@ -81,7 +81,37 @@ document.addEventListener('DOMContentLoaded', () => {
         'Forms API': (key) => `# Google Forms API\ncurl -s "https://forms.googleapis.com/v1/forms/1FAIpQLSfQ9_K1_U-M72UxtlQ03MvE6f8p4e-F5G0b8G199_2?key=${key}"`,
         'Maps Roads API': (key) => `# Google Maps Roads API\ncurl -s "https://roads.googleapis.com/v1/snapToRoads?path=-35.27801,149.12958|-35.28032,149.12907&interpolate=true&key=${key}"`,
         'Maps Elevation API': (key) => `# Google Maps Elevation API\ncurl -s "https://maps.googleapis.com/maps/api/elevation/json?locations=39.7391536,-104.9847034&key=${key}"`,
-        'Maps Time Zone API': (key) => `# Google Maps Time Zone API\ncurl -s "https://maps.googleapis.com/maps/api/timezone/json?location=39.6034810,-119.6822510&timestamp=1331161200&key=${key}"`
+        'Maps Time Zone API': (key) => `# Google Maps Time Zone API\ncurl -s "https://maps.googleapis.com/maps/api/timezone/json?location=39.6034810,-119.6822510&timestamp=1331161200&key=${key}"`,
+        'Cloud Storage API': (key) => `# Google Cloud Storage API\ncurl -s "https://storage.googleapis.com/storage/v1/b?project=test&key=${key}"`,
+        'Firebase Dynamic Links API': (key) => `# Firebase Dynamic Links API\ncurl -s "https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${key}"`,
+        'My Business API': (key) => `# Google My Business API\ncurl -s "https://mybusiness.googleapis.com/v4/accounts?key=${key}"`,
+        'Analytics Data API (GA4)': (key) => `# Google Analytics Data API\ncurl -s "https://analyticsdata.googleapis.com/v1beta/properties/1234567/metadata?key=${key}"`,
+        'Cloud Natural Language API': (key) => `# Google Cloud Natural Language API\ncurl -s "https://language.googleapis.com/v1/documents:analyzeSentiment?key=${key}"`,
+        'Cloud Vision API': (key) => `# Google Cloud Vision API\ncurl -s "https://vision.googleapis.com/v1/images:annotate?key=${key}"`,
+        'Compute Engine API': (key) => `# Google Compute Engine API\ncurl -s "https://compute.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-11?key=${key}"`,
+        'Knowledge Graph Search API': (key) => `# Google Knowledge Graph Search API\ncurl -s "https://kgsearch.googleapis.com/v1/entities:search?query=taylor+swift&key=${key}"`,
+        'Distance Matrix API': (key) => `# Google Maps Distance Matrix API\ncurl -s "https://maps.googleapis.com/maps/api/distancematrix/json?origins=Washington,DC&destinations=New+York+City,NY&key=${key}"`,
+        'Street View Static API': (key) => `# Google Street View Static API\ncurl -s "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=40.720032,-73.988354&fov=90&heading=235&pitch=10&key=${key}"`,
+        'YouTube Live Streaming API': (key) => `# YouTube Live Streaming API\ncurl -s "https://www.googleapis.com/youtube/v3/liveBroadcasts?part=snippet&broadcastStatus=all&key=${key}"`,
+        'Classroom API': (key) => `# Google Classroom API\ncurl -s "https://classroom.googleapis.com/v1/courses?key=${key}"`,
+        'Keep API': (key) => `# Google Keep API\ncurl -s "https://keep.googleapis.com/v1/notes?key=${key}"`,
+        'Cloud Translation API (Advanced)': (key) => `# Google Cloud Translation Advanced API\ncurl -s "https://translation.googleapis.com/v3/projects/project-id/supportedLanguages?key=${key}"`,
+        'Search Console API': (key) => `# Google Search Console API\ncurl -s "https://searchconsole.googleapis.com/webmasters/v3/sites?key=${key}"`,
+        'Site Verification API': (key) => `# Google Site Verification API\ncurl -s "https://siteverification.googleapis.com/v1/webResource?key=${key}"`,
+        'Cloud Billing API': (key) => `# Google Cloud Billing API\ncurl -s "https://cloudbilling.googleapis.com/v1/billingAccounts?key=${key}"`,
+        'Cloud KMS API': (key) => `# Google Cloud KMS API\ncurl -s "https://cloudkms.googleapis.com/v1/projects/test/locations/global/keyRings?key=${key}"`,
+        'Identity Toolkit API': (key) => `# Google Identity Toolkit API\ncurl -s "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${key}"`,
+        'Firestore API': (key) => `# Google Firestore API\ncurl -s "https://firestore.googleapis.com/v1/projects/test/databases/(default)/documents?key=${key}"`,
+        'Cloud Video Intelligence API': (key) => `# Google Cloud Video Intelligence API\ncurl -s "https://videointelligence.googleapis.com/v1/operations?key=${key}"`,
+        'Cloud Speech-to-Text API': (key) => `# Google Cloud Speech-to-Text API\ncurl -s "https://speech.googleapis.com/v1/operations?key=${key}"`,
+        'Cloud Text-to-Speech API': (key) => `# Google Cloud Text-to-Speech API\ncurl -s "https://texttospeech.googleapis.com/v1/voices?key=${key}"`,
+        'People API': (key) => `# Google People API\ncurl -s "https://people.googleapis.com/v1/people/me/connections?personFields=names,emailAddresses&key=${key}"`,
+        'Play Games Services API': (key) => `# Google Play Games Services API\ncurl -s "https://games.googleapis.com/games/v1/players/me?key=${key}"`,
+        'Maps Solar API': (key) => `# Google Maps Solar API\ncurl -s "https://solar.googleapis.com/v1/dataLayers:get?location.latitude=37.4449739&location.longitude=-122.1391465&radiusMeters=10&key=${key}"`,
+        'YouTube Reporting API': (key) => `# YouTube Reporting API\ncurl -s "https://youtubereporting.googleapis.com/v1/jobs?key=${key}"`,
+        'Cloud Tasks API': (key) => `# Google Cloud Tasks API\ncurl -s "https://cloudtasks.googleapis.com/v2/projects/test/locations/global/queues?key=${key}"`,
+        'Cloud Logging API': (key) => `# Google Cloud Logging API\ncurl -s "https://logging.googleapis.com/v2/projects/test/metrics?key=${key}"`,
+        'Firebase ML API': (key) => `# Firebase ML API\ncurl -s "https://firebaseml.googleapis.com/v1beta2/projects/test/models?key=${key}"`
     };
 
     // Event Listeners (Maps)
@@ -181,7 +211,37 @@ document.addEventListener('DOMContentLoaded', () => {
             checkFetch(`https://forms.googleapis.com/v1/forms/1FAIpQLSfQ9_K1_U-M72UxtlQ03MvE6f8p4e-F5G0b8G199_2?key=${apiKey}`, 'Forms API'),
             checkFetch(`https://roads.googleapis.com/v1/snapToRoads?path=-35.27801,149.12958|-35.28032,149.12907&interpolate=true&key=${apiKey}`, 'Maps Roads API'),
             checkFetch(`https://maps.googleapis.com/maps/api/elevation/json?locations=39.7391536,-104.9847034&key=${apiKey}`, 'Maps Elevation API'),
-            checkFetch(`https://maps.googleapis.com/maps/api/timezone/json?location=39.6034810,-119.6822510&timestamp=1331161200&key=${apiKey}`, 'Maps Time Zone API')
+            checkFetch(`https://maps.googleapis.com/maps/api/timezone/json?location=39.6034810,-119.6822510&timestamp=1331161200&key=${apiKey}`, 'Maps Time Zone API'),
+            checkFetch(`https://storage.googleapis.com/storage/v1/b?project=test&key=${apiKey}`, 'Cloud Storage API'),
+            checkFetch(`https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${apiKey}`, 'Firebase Dynamic Links API'),
+            checkFetch(`https://mybusiness.googleapis.com/v4/accounts?key=${apiKey}`, 'My Business API'),
+            checkFetch(`https://analyticsdata.googleapis.com/v1beta/properties/1234567/metadata?key=${apiKey}`, 'Analytics Data API (GA4)'),
+            checkFetch(`https://language.googleapis.com/v1/documents:analyzeSentiment?key=${apiKey}`, 'Cloud Natural Language API'),
+            checkFetch(`https://vision.googleapis.com/v1/images:annotate?key=${apiKey}`, 'Cloud Vision API'),
+            checkFetch(`https://compute.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-11?key=${apiKey}`, 'Compute Engine API'),
+            checkFetch(`https://kgsearch.googleapis.com/v1/entities:search?query=taylor+swift&key=${apiKey}`, 'Knowledge Graph Search API'),
+            checkFetch(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=Washington,DC&destinations=New+York+City,NY&key=${apiKey}`, 'Distance Matrix API'),
+            checkFetch(`https://maps.googleapis.com/maps/api/streetview?size=400x400&location=40.720032,-73.988354&fov=90&heading=235&pitch=10&key=${apiKey}`, 'Street View Static API'),
+            checkFetch(`https://www.googleapis.com/youtube/v3/liveBroadcasts?part=snippet&broadcastStatus=all&key=${apiKey}`, 'YouTube Live Streaming API'),
+            checkFetch(`https://classroom.googleapis.com/v1/courses?key=${apiKey}`, 'Classroom API'),
+            checkFetch(`https://keep.googleapis.com/v1/notes?key=${apiKey}`, 'Keep API'),
+            checkFetch(`https://translation.googleapis.com/v3/projects/project-id/supportedLanguages?key=${apiKey}`, 'Cloud Translation API (Advanced)'),
+            checkFetch(`https://searchconsole.googleapis.com/webmasters/v3/sites?key=${apiKey}`, 'Search Console API'),
+            checkFetch(`https://siteverification.googleapis.com/v1/webResource?key=${apiKey}`, 'Site Verification API'),
+            checkFetch(`https://cloudbilling.googleapis.com/v1/billingAccounts?key=${apiKey}`, 'Cloud Billing API'),
+            checkFetch(`https://cloudkms.googleapis.com/v1/projects/test/locations/global/keyRings?key=${apiKey}`, 'Cloud KMS API'),
+            checkFetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${apiKey}`, 'Identity Toolkit API'),
+            checkFetch(`https://firestore.googleapis.com/v1/projects/test/databases/(default)/documents?key=${apiKey}`, 'Firestore API'),
+            checkFetch(`https://videointelligence.googleapis.com/v1/operations?key=${apiKey}`, 'Cloud Video Intelligence API'),
+            checkFetch(`https://speech.googleapis.com/v1/operations?key=${apiKey}`, 'Cloud Speech-to-Text API'),
+            checkFetch(`https://texttospeech.googleapis.com/v1/voices?key=${apiKey}`, 'Cloud Text-to-Speech API'),
+            checkFetch(`https://people.googleapis.com/v1/people/me/connections?personFields=names,emailAddresses&key=${apiKey}`, 'People API'),
+            checkFetch(`https://games.googleapis.com/games/v1/players/me?key=${apiKey}`, 'Play Games Services API'),
+            checkFetch(`https://solar.googleapis.com/v1/dataLayers:get?location.latitude=37.4449739&location.longitude=-122.1391465&radiusMeters=10&key=${apiKey}`, 'Maps Solar API'),
+            checkFetch(`https://youtubereporting.googleapis.com/v1/jobs?key=${apiKey}`, 'YouTube Reporting API'),
+            checkFetch(`https://cloudtasks.googleapis.com/v2/projects/test/locations/global/queues?key=${apiKey}`, 'Cloud Tasks API'),
+            checkFetch(`https://logging.googleapis.com/v2/projects/test/metrics?key=${apiKey}`, 'Cloud Logging API'),
+            checkFetch(`https://firebaseml.googleapis.com/v1beta2/projects/test/models?key=${apiKey}`, 'Firebase ML API')
         ]);
 
         const validKey = results.some(r => r.status === 'success');
@@ -229,11 +289,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 if (data.error_message) return { name: name, status: 'error', msg: data.error_message };
+                if (data.errorMessage) return { name: name, status: 'error', msg: data.errorMessage };
                 if (data.error && data.error.message) return { name: name, status: 'error', msg: data.error.message };
+                if (data.status === 'REQUEST_DENIED') return { name: name, status: 'error', msg: data.errorMessage || data.error_message || 'Request Denied' };
                 return { name: name, status: 'success', msg: 'Authorized' };
             } else {
                 let msg = 'Denied';
                 if (data.error_message) msg = data.error_message;
+                else if (data.errorMessage) msg = data.errorMessage;
                 else if (data.error && data.error.message) msg = data.error.message;
                 else if (response.status === 403) msg = '403 Forbidden';
                 else if (data.status) msg = data.status;
