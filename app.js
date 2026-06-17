@@ -111,7 +111,17 @@ document.addEventListener('DOMContentLoaded', () => {
         'YouTube Reporting API': (key) => `# YouTube Reporting API\ncurl -s "https://youtubereporting.googleapis.com/v1/jobs?key=${key}"`,
         'Cloud Tasks API': (key) => `# Google Cloud Tasks API\ncurl -s "https://cloudtasks.googleapis.com/v2/projects/test/locations/global/queues?key=${key}"`,
         'Cloud Logging API': (key) => `# Google Cloud Logging API\ncurl -s "https://logging.googleapis.com/v2/projects/test/metrics?key=${key}"`,
-        'Firebase ML API': (key) => `# Firebase ML API\ncurl -s "https://firebaseml.googleapis.com/v1beta2/projects/test/models?key=${key}"`
+        'Firebase ML API': (key) => `# Firebase ML API\ncurl -s "https://firebaseml.googleapis.com/v1beta2/projects/test/models?key=${key}"`,
+        'Cloud Resource Manager API': (key) => `# Google Cloud Resource Manager API\ncurl -s "https://cloudresourcemanager.googleapis.com/v1/projects?key=${key}"`,
+        'Cloud Build API': (key) => `# Google Cloud Build API\ncurl -s "https://cloudbuild.googleapis.com/v1/projects/test/builds?key=${key}"`,
+        'Cloud Functions API': (key) => `# Google Cloud Functions API\ncurl -s "https://cloudfunctions.googleapis.com/v1/projects/test/locations/us-central1/functions?key=${key}"`,
+        'Cloud Run API': (key) => `# Google Cloud Run API\ncurl -s "https://run.googleapis.com/v1/projects/test/locations/us-central1/services?key=${key}"`,
+        'Secret Manager API': (key) => `# Google Secret Manager API\ncurl -s "https://secretmanager.googleapis.com/v1/projects/test/secrets?key=${key}"`,
+        'App Engine Admin API': (key) => `# Google App Engine Admin API\ncurl -s "https://appengine.googleapis.com/v1/apps/test?key=${key}"`,
+        'Cloud SQL Admin API': (key) => `# Google Cloud SQL Admin API\ncurl -s "https://sqladmin.googleapis.com/v1/projects/test/instances?key=${key}"`,
+        'Cloud Pub/Sub API': (key) => `# Google Cloud Pub/Sub API\ncurl -s "https://pubsub.googleapis.com/v1/projects/test/topics?key=${key}"`,
+        'Play Custom App API': (key) => `# Google Play Custom App API\ncurl -s "https://playcustomapp.googleapis.com/playcustomapp/v1/accounts/123/customApps?key=${key}"`,
+        'Play Developer Reporting API': (key) => `# Google Play Developer Reporting API\ncurl -s "https://playdeveloperreporting.googleapis.com/v1beta1/apps/com.example/anrRateMetricSet?key=${key}"`
     };
 
     // Event Listeners (Maps)
@@ -241,7 +251,17 @@ document.addEventListener('DOMContentLoaded', () => {
             checkFetch(`https://youtubereporting.googleapis.com/v1/jobs?key=${apiKey}`, 'YouTube Reporting API'),
             checkFetch(`https://cloudtasks.googleapis.com/v2/projects/test/locations/global/queues?key=${apiKey}`, 'Cloud Tasks API'),
             checkFetch(`https://logging.googleapis.com/v2/projects/test/metrics?key=${apiKey}`, 'Cloud Logging API'),
-            checkFetch(`https://firebaseml.googleapis.com/v1beta2/projects/test/models?key=${apiKey}`, 'Firebase ML API')
+            checkFetch(`https://firebaseml.googleapis.com/v1beta2/projects/test/models?key=${apiKey}`, 'Firebase ML API'),
+            checkFetch(`https://cloudresourcemanager.googleapis.com/v1/projects?key=${apiKey}`, 'Cloud Resource Manager API'),
+            checkFetch(`https://cloudbuild.googleapis.com/v1/projects/test/builds?key=${apiKey}`, 'Cloud Build API'),
+            checkFetch(`https://cloudfunctions.googleapis.com/v1/projects/test/locations/us-central1/functions?key=${apiKey}`, 'Cloud Functions API'),
+            checkFetch(`https://run.googleapis.com/v1/projects/test/locations/us-central1/services?key=${apiKey}`, 'Cloud Run API'),
+            checkFetch(`https://secretmanager.googleapis.com/v1/projects/test/secrets?key=${apiKey}`, 'Secret Manager API'),
+            checkFetch(`https://appengine.googleapis.com/v1/apps/test?key=${apiKey}`, 'App Engine Admin API'),
+            checkFetch(`https://sqladmin.googleapis.com/v1/projects/test/instances?key=${apiKey}`, 'Cloud SQL Admin API'),
+            checkFetch(`https://pubsub.googleapis.com/v1/projects/test/topics?key=${apiKey}`, 'Cloud Pub/Sub API'),
+            checkFetch(`https://playcustomapp.googleapis.com/playcustomapp/v1/accounts/123/customApps?key=${apiKey}`, 'Play Custom App API'),
+            checkFetch(`https://playdeveloperreporting.googleapis.com/v1beta1/apps/com.example/anrRateMetricSet?key=${apiKey}`, 'Play Developer Reporting API')
         ]);
 
         const validKey = results.some(r => r.status === 'success');
