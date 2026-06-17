@@ -64,94 +64,162 @@
     </div>
 
     <main class="container">
-        <header class="hero">
-            <h1 class="gradient-text">G-Maps Validator</h1>
-            <p class="subtitle">Validate keys. Check services. Estimate costs.</p>
-        </header>
+        <!-- Top Navigation Menu -->
+        <nav class="top-menu">
+            <button class="menu-btn active" data-target="mapsView">Google Maps</button>
+            <button class="menu-btn" data-target="apisView">Google API Keys</button>
+        </nav>
 
-        <section class="card input-section">
-            <div class="input-group">
-                <input type="text" id="apiKeyInput" placeholder="Paste your Google Maps API Key here..."
-                    autocomplete="off" spellcheck="false">
-                <button id="validateBtn" class="btn-primary">
-                    <span class="btn-text">Validate Key</span>
-                    <span class="loader hidden"></span>
-                </button>
-            </div>
-            <p class="safe-note">🔒 Runs entirely in your browser. Keys are never stored.</p>
-        </section>
+        <!-- ============================== -->
+        <!-- VIEW 1: GOOGLE MAPS VALIDATOR  -->
+        <!-- ============================== -->
+        <div id="mapsView" class="view-section active">
+            <header class="hero">
+                <h1 class="gradient-text">G-Maps Validator</h1>
+                <p class="subtitle">Validate keys. Check services. Estimate costs.</p>
+            </header>
 
-        <section id="resultsSection" class="results-container hidden">
-            <!-- Status API Key -->
-            <div class="card status-card">
-                <div class="status-header">
-                    <h2>API Key Status</h2>
-                    <span id="keyStatusBadge" class="badge badge-pending">Analyzing...</span>
-                </div>
-            </div>
-
-            <!-- Enabled APIs -->
-            <div class="card services-card">
-                <h3>Enabled Services</h3>
-                <div class="services-grid" id="servicesGrid">
-                    <!-- Dynamic Service Items -->
-                </div>
-            </div>
-
-            <!-- POC Curl Commands -->
-            <div class="card poc-card hidden" id="pocCard">
-                <div class="poc-header">
-                    <h3>🧪 POC Curl Commands</h3>
-                    <button id="copyAllCurlBtn" class="btn-copy-all" title="Copy all curl commands">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                        <span>Copy All</span>
+            <section class="card input-section">
+                <div class="input-group">
+                    <input type="text" id="apiKeyInput" placeholder="Paste your Google Maps API Key here..."
+                        autocomplete="off" spellcheck="false">
+                    <button id="validateBtn" class="btn-primary">
+                        <span class="btn-text">Validate Key</span>
+                        <span class="loader hidden"></span>
                     </button>
                 </div>
-                <p class="poc-subtitle">Ready-to-use curl commands for enabled APIs (HTTP 200 OK)</p>
-                <div class="poc-commands" id="pocCommands">
-                    <!-- Dynamic Curl Items -->
-                </div>
-            </div>
+                <p class="safe-note">🔒 Runs entirely in your browser. Keys are never stored.</p>
+            </section>
 
-            <!-- Cost Estimation -->
-            <div class="card cost-card">
-                <h3>Estimated Monthly Exposure</h3>
-                <div class="cost-breakdown">
-                    <div class="cost-item">
-                        <span>Risk Level</span>
-                        <span id="riskLevel" class="risk-badge">Low</span>
-                    </div>
-                    <div class="cost-item total-cost">
-                        <span>Potential Cost (100k reqs)</span>
-                        <span id="totalCost" class="cost-value">$0.00</span>
+            <section id="resultsSection" class="results-container hidden">
+                <!-- Status API Key -->
+                <div class="card status-card">
+                    <div class="status-header">
+                        <h2>API Key Status</h2>
+                        <span id="keyStatusBadge" class="badge badge-pending">Analyzing...</span>
                     </div>
                 </div>
-                <div class="simulation-control">
-                    <label for="reqRange">Simulated Requests: <span id="reqCountDisplay">100,000</span></label>
-                    <input type="range" id="reqRange" min="1000" max="1000000" step="1000" value="100000">
+
+                <!-- Enabled APIs -->
+                <div class="card services-card">
+                    <h3>Enabled Services</h3>
+                    <div class="services-grid" id="servicesGrid">
+                        <!-- Dynamic Service Items -->
+                    </div>
                 </div>
-            </div>
 
-            <div class="cost-detail-table-wrapper">
-                <table class="cost-table">
-                    <thead>
-                        <tr>
-                            <th>Service</th>
-                            <th>Status</th>
-                            <th>Cost / 1k</th>
-                            <th>Est. Cost</th>
-                        </tr>
-                    </thead>
-                    <tbody id="costTableBody">
-                        <!-- Dynamic Rows -->
-                    </tbody>
-                </table>
-            </div>
+                <!-- POC Curl Commands -->
+                <div class="card poc-card hidden" id="pocCard">
+                    <div class="poc-header">
+                        <h3>🧪 POC Curl Commands</h3>
+                        <button id="copyAllCurlBtn" class="btn-copy-all" title="Copy all curl commands">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            <span>Copy All</span>
+                        </button>
+                    </div>
+                    <p class="poc-subtitle">Ready-to-use curl commands for enabled APIs (HTTP 200 OK)</p>
+                    <div class="poc-commands" id="pocCommands">
+                        <!-- Dynamic Curl Items -->
+                    </div>
+                </div>
 
-        </section>
+                <!-- Cost Estimation -->
+                <div class="card cost-card">
+                    <h3>Estimated Monthly Exposure</h3>
+                    <div class="cost-breakdown">
+                        <div class="cost-item">
+                            <span>Risk Level</span>
+                            <span id="riskLevel" class="risk-badge">Low</span>
+                        </div>
+                        <div class="cost-item total-cost">
+                            <span>Potential Cost (100k reqs)</span>
+                            <span id="totalCost" class="cost-value">$0.00</span>
+                        </div>
+                    </div>
+                    <div class="simulation-control">
+                        <label for="reqRange">Simulated Requests: <span id="reqCountDisplay">100,000</span></label>
+                        <input type="range" id="reqRange" min="1000" max="1000000" step="1000" value="100000">
+                    </div>
+                </div>
+
+                <div class="cost-detail-table-wrapper">
+                    <table class="cost-table">
+                        <thead>
+                            <tr>
+                                <th>Service</th>
+                                <th>Status</th>
+                                <th>Cost / 1k</th>
+                                <th>Est. Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody id="costTableBody">
+                            <!-- Dynamic Rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============================== -->
+        <!-- VIEW 2: GOOGLE APIs VALIDATOR  -->
+        <!-- ============================== -->
+        <div id="apisView" class="view-section hidden">
+            <header class="hero">
+                <h1 class="gradient-text" style="background: linear-gradient(to right, #10b981, #3b82f6); -webkit-background-clip: text; color: transparent;">Google API Validator</h1>
+                <p class="subtitle">Check your key against YouTube, Drive, Calendar, and more.</p>
+            </header>
+
+            <section class="card input-section">
+                <div class="input-group">
+                    <input type="text" id="apiApiKeyInput" placeholder="Paste your Google API Key here..."
+                        autocomplete="off" spellcheck="false">
+                    <button id="apiValidateBtn" class="btn-primary" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        <span class="btn-text">Validate Key</span>
+                        <span class="loader hidden"></span>
+                    </button>
+                </div>
+                <p class="safe-note">🔒 Runs entirely in your browser. Keys are never stored.</p>
+            </section>
+
+            <section id="apiResultsSection" class="results-container hidden">
+                <!-- Status API Key -->
+                <div class="card status-card">
+                    <div class="status-header">
+                        <h2>API Key Status</h2>
+                        <span id="apiKeyStatusBadge" class="badge badge-pending">Analyzing...</span>
+                    </div>
+                </div>
+
+                <!-- Enabled APIs -->
+                <div class="card services-card">
+                    <h3>Enabled Services</h3>
+                    <div class="services-grid" id="apiServicesGrid">
+                        <!-- Dynamic Service Items -->
+                    </div>
+                </div>
+
+                <!-- POC Curl Commands -->
+                <div class="card poc-card hidden" id="apiPocCard">
+                    <div class="poc-header">
+                        <h3>🧪 POC Curl Commands</h3>
+                        <button id="apiCopyAllCurlBtn" class="btn-copy-all" title="Copy all curl commands">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            <span>Copy All</span>
+                        </button>
+                    </div>
+                    <p class="poc-subtitle">Ready-to-use curl commands for enabled APIs</p>
+                    <div class="poc-commands" id="apiPocCommands">
+                        <!-- Dynamic Curl Items -->
+                    </div>
+                </div>
+            </section>
+        </div>
 
         <footer class="footer">
             <div class="disclaimer">
@@ -159,7 +227,7 @@
                 <p>This tool is for educational and security auditing purposes only. Only test keys you own. Misuse may
                     violate Google's Terms of Service.</p>
             </div>
-            <p class="copyright">© 2024 Google Maps API Key Validator. Open Source on GitHub.</p>
+            <p class="copyright">© 2024 Google Maps & API Key Validator. Open Source on GitHub.</p>
         </footer>
     </main>
 
