@@ -121,7 +121,17 @@ document.addEventListener('DOMContentLoaded', () => {
         'Cloud SQL Admin API': (key) => `# Google Cloud SQL Admin API\ncurl -s "https://sqladmin.googleapis.com/v1/projects/test/instances?key=${key}"`,
         'Cloud Pub/Sub API': (key) => `# Google Cloud Pub/Sub API\ncurl -s "https://pubsub.googleapis.com/v1/projects/test/topics?key=${key}"`,
         'Play Custom App API': (key) => `# Google Play Custom App API\ncurl -s "https://playcustomapp.googleapis.com/playcustomapp/v1/accounts/123/customApps?key=${key}"`,
-        'Play Developer Reporting API': (key) => `# Google Play Developer Reporting API\ncurl -s "https://playdeveloperreporting.googleapis.com/v1beta1/apps/com.example/anrRateMetricSet?key=${key}"`
+        'Play Developer Reporting API': (key) => `# Google Play Developer Reporting API\ncurl -s "https://playdeveloperreporting.googleapis.com/v1beta1/apps/com.example/anrRateMetricSet?key=${key}"`,
+        'Generative Language API': (key) => `# Generative Language API\ncurl -s "https://generativelanguage.googleapis.com/v1beta/models?key=${key}"`,
+        'Vertex AI API': (key) => `# Vertex AI API\ncurl -s "https://us-central1-aiplatform.googleapis.com/v1/projects/test/locations/us-central1/endpoints?key=${key}"`,
+        'Dialogflow API': (key) => `# Dialogflow API\ncurl -s "https://dialogflow.googleapis.com/v2/projects/test/agent?key=${key}"`,
+        'AutoML API': (key) => `# AutoML API\ncurl -s "https://automl.googleapis.com/v1/projects/test/locations/us-central1/models?key=${key}"`,
+        'Document AI API': (key) => `# Document AI API\ncurl -s "https://documentai.googleapis.com/v1/projects/test/locations/us/processors?key=${key}"`,
+        'Retail API': (key) => `# Retail API (Recommendations AI)\ncurl -s "https://retail.googleapis.com/v2/projects/test/locations/global/catalogs/default_catalog/branches/0/operations?key=${key}"`,
+        'Contact Center Insights API': (key) => `# Contact Center Insights API\ncurl -s "https://contactcenterinsights.googleapis.com/v1/projects/test/locations/us-central1/conversations?key=${key}"`,
+        'Cloud Talent Solution API': (key) => `# Cloud Talent Solution API\ncurl -s "https://jobs.googleapis.com/v4/projects/test/tenants?key=${key}"`,
+        'Vision AI API': (key) => `# Vision AI API\ncurl -s "https://visionai.googleapis.com/v1/projects/test/locations/us-central1/clusters?key=${key}"`,
+        'Discovery Engine API': (key) => `# Discovery Engine API\ncurl -s "https://discoveryengine.googleapis.com/v1/projects/test/locations/global/collections/default_collection/dataStores?key=${key}"`
     };
 
     // Event Listeners (Maps)
@@ -261,7 +271,17 @@ document.addEventListener('DOMContentLoaded', () => {
             checkFetch(`https://sqladmin.googleapis.com/v1/projects/test/instances?key=${apiKey}`, 'Cloud SQL Admin API'),
             checkFetch(`https://pubsub.googleapis.com/v1/projects/test/topics?key=${apiKey}`, 'Cloud Pub/Sub API'),
             checkFetch(`https://playcustomapp.googleapis.com/playcustomapp/v1/accounts/123/customApps?key=${apiKey}`, 'Play Custom App API'),
-            checkFetch(`https://playdeveloperreporting.googleapis.com/v1beta1/apps/com.example/anrRateMetricSet?key=${apiKey}`, 'Play Developer Reporting API')
+            checkFetch(`https://playdeveloperreporting.googleapis.com/v1beta1/apps/com.example/anrRateMetricSet?key=${apiKey}`, 'Play Developer Reporting API'),
+            checkFetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`, 'Generative Language API'),
+            checkFetch(`https://us-central1-aiplatform.googleapis.com/v1/projects/test/locations/us-central1/endpoints?key=${apiKey}`, 'Vertex AI API'),
+            checkFetch(`https://dialogflow.googleapis.com/v2/projects/test/agent?key=${apiKey}`, 'Dialogflow API'),
+            checkFetch(`https://automl.googleapis.com/v1/projects/test/locations/us-central1/models?key=${apiKey}`, 'AutoML API'),
+            checkFetch(`https://documentai.googleapis.com/v1/projects/test/locations/us/processors?key=${apiKey}`, 'Document AI API'),
+            checkFetch(`https://retail.googleapis.com/v2/projects/test/locations/global/catalogs/default_catalog/branches/0/operations?key=${apiKey}`, 'Retail API'),
+            checkFetch(`https://contactcenterinsights.googleapis.com/v1/projects/test/locations/us-central1/conversations?key=${apiKey}`, 'Contact Center Insights API'),
+            checkFetch(`https://jobs.googleapis.com/v4/projects/test/tenants?key=${apiKey}`, 'Cloud Talent Solution API'),
+            checkFetch(`https://visionai.googleapis.com/v1/projects/test/locations/us-central1/clusters?key=${apiKey}`, 'Vision AI API'),
+            checkFetch(`https://discoveryengine.googleapis.com/v1/projects/test/locations/global/collections/default_collection/dataStores?key=${apiKey}`, 'Discovery Engine API')
         ]);
 
         const validKey = results.some(r => r.status === 'success');
